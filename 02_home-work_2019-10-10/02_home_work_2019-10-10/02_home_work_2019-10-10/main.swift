@@ -17,40 +17,99 @@ let months = [
     ("December", 31)
 ]
 
-let workShedule: [String] = [
-    "0 Day shift",
-    "1 Night shift",
-    "2 First day off",
-    "3 Second day off"
+var workShedule: [String] = [
+    "Day shift",
+    "Night shift",
+    "First day off",
+    "Second day off"
 ]
 
+func setWorkShedule(firstShift: Int = 0) -> [String] {
+    let firstHalf = workShedule[..<firstShift]
+    let secondHalf = workShedule[firstShift...]
+    let shedule = secondHalf + firstHalf
+    var nextShedule: [String] = []
+    for shift in shedule {
+        nextShedule.append(shift)
+    }
+    return nextShedule
+}
+
+func printWorkShedule() {
+  print("1st = \(workShedule[0]), 2nd = \(workShedule[1]), 3rd = \(workShedule[2]), 4th = \(workShedule[3])")
+}
+
+print("A work shedule by default:")
+printWorkShedule()
+
+print("Input a shift number for 1 January: ")
+if let inputShift = readLine() {
+    let defaultShift = 1
+    var inputNumber = inputShift == "" ? defaultShift : Int(inputShift) ?? defaultShift
+    if inputNumber > workShedule.count || inputNumber < defaultShift {
+        inputNumber = defaultShift
+    }
+    
+    workShedule = setWorkShedule(firstShift: inputNumber - 1 )
+}
+
+print("The current work shedule:")
+printWorkShedule()
+
 /**
- * getDaysByShedule
+ *   [mohth: [day: shiftNumber]]
  **/
-func getDaysByShedule(sheduleNumber n: Int = 0) -> ArraySlice<String> {
-    guard n == 0 || n < workShedule.count else { return workShedule[0...] }
-    return workShedule[n...]
-}
-
-func getMonth(dayQuantity: Int, shiftDay: Int) -> [Int: Int] {
-    var monthMap: [Int: Int] = [:]
+var year: [Int: [Int: Int]] = [:]
+// go to months
+for (numberMonth, (_,dayQuantity)) in months.enumerated() {
+    var monthDays: [Int: Int] = [:]
+    var shift = 0
     
-    let firstWorkingDays = getDaysByShedule(sheduleNumber: shiftDay)
-    
-    // create January  month - first days
-    for (i, name) in firstWorkingDays.enumerated() {
-        monthMap[i + 1] = workShedule.firstIndex(of: name)
+    for day in 1...dayQuantity {
+        monthDays[day] = shift
+        shift =
+            shift < workShedule.count - 1
+                ? shift + 1
+                : 0
     }
     
-    // create January month - other days
-    for day in stride(from: firstWorkingDays.count + 1, to: 31, by: workShedule.count) {
-        for (i, _) in workShedule.enumerated() {
-            monthMap[day + i] = i
-        }
-    }
-
-    return monthMap
+    year[numberMonth + 1] = monthDays
 }
 
+print("Input number of month of year => 1(January) - 12(December):")
 
-let janMonth = getMonth(dayQuantity: 31, shiftDay: 2)
+var monthNumber = 1
+
+if let inputMonthNumber = readLine() {
+    monthNumber = Int(inputMonthNumber) ?? monthNumber
+    if monthNumber > 12 {
+        print("Only 12 months")
+        monthNumber = 12
+    }
+    if monthNumber < 1 {
+        print("there is no such month as a number")
+        monthNumber = 1
+    }
+    
+    print("The current number of month = \(monthNumber)")
+}
+
+print("Input number of a working day: ")
+
+var defaultDayNumber = 1
+var dayNumber = defaultDayNumber
+
+if let inputDay = readLine() {
+    dayNumber = Int(inputDay) ?? defaultDayNumber
+    if dayNumber < defaultDayNumber {
+        dayNumber = defaultDayNumber
+    }
+    if dayNumber > year[monthNumber]!.count {
+        dayNumber = year[monthNumber]!.count
+    }
+    print("The number of day: \(dayNumber)")
+}
+
+if let shiftNumber = year[monthNumber]![dayNumber] {
+    print(workShedule[shiftNumber])
+}
