@@ -28,9 +28,9 @@ var workShedule: [String] = [
 ]
 
 func getNameMonth(number: Int) -> String {
-    for (i, month) in months.enumerated() {
+    for (i, (name, _)) in months.enumerated() {
         if i + 1 == number {
-            return month.0
+            return name
         }
     }
     return "No month"
