@@ -5,8 +5,6 @@
 
 import Foundation
 
-let NUMBERS_OF_MONTHS = 12
-
 let months = [
     ("January", 31),
     ("February", 29),
@@ -28,6 +26,15 @@ var workShedule: [String] = [
     "First day off",
     "Second day off"
 ]
+
+func getNameMonth(number: Int) -> String {
+    for (i, month) in months.enumerated() {
+        if i + 1 == number {
+            return month.0
+        }
+    }
+    return "No month"
+}
 
 func setWorkShedule(firstShift: Int = 0) -> [String] {
     let firstHalf = workShedule[..<firstShift]
@@ -96,7 +103,7 @@ if let inputMonthNumber = readLine() {
         monthNumber = 1
     }
     
-    print("The current number of month = \(monthNumber)")
+    print("The current number of month = \(monthNumber) - \(getNameMonth(number: monthNumber))")
 }
 
 print("Input number of a working day: ")
@@ -116,5 +123,5 @@ if let inputDay = readLine() {
 }
 
 if let shiftNumber = year[monthNumber]![dayNumber] {
-    print(workShedule[shiftNumber])
+    print("*** \(dayNumber) \(getNameMonth(number: monthNumber)): \(workShedule[shiftNumber]) ***")
 }
