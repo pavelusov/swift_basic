@@ -22,15 +22,15 @@ extension Double: Summable {
 // Extra
 extension String: Summable {
     typealias Member = String
-    static func +(lhs: Member, rhs: Member) -> Member {
-        return "\(lhs) \(rhs)"
+    static func +(a: Member, b: Member) -> Member {
+        return "\(a) \(b)"
     }
 }
 
 extension Set: Summable {
     typealias Member = Set
-    static func +(lhs: Member, rhs: Member) -> Member {
-        return lhs.union(rhs)
+    static func +(a: Member, b: Member) -> Member {
+        return a.union(b)
     }
 }
 
