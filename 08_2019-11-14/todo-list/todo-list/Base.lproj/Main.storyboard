@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="todo_list" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CwL-vY-7cV">
+                                <rect key="frame" x="20" y="90" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIs-pN-Pf2">
+                                <rect key="frame" x="20" y="146" width="374" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <state key="normal" title="ADD">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O2w-xP-hKp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My To Do list" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI0-0H-0DJ">
+                                <rect key="frame" x="125" y="255" width="164" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Ha-Al-2pP">
+                                <rect key="frame" x="20" y="306" width="374" height="544"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fI0-0H-0DJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="180-EB-hb7"/>
+                            <constraint firstItem="3Ha-Al-2pP" firstAttribute="top" secondItem="fI0-0H-0DJ" secondAttribute="bottom" constant="17" id="96I-cM-hWS"/>
+                            <constraint firstItem="fI0-0H-0DJ" firstAttribute="top" secondItem="nIs-pN-Pf2" secondAttribute="bottom" constant="75" id="CYY-T4-jjP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CwL-vY-7cV" secondAttribute="trailing" constant="20" id="FWz-pR-ER4"/>
+                            <constraint firstItem="nIs-pN-Pf2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IUg-iN-y1Z"/>
+                            <constraint firstItem="nIs-pN-Pf2" firstAttribute="top" secondItem="CwL-vY-7cV" secondAttribute="bottom" constant="22" id="IhJ-Fm-4te"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Ha-Al-2pP" secondAttribute="trailing" constant="20" id="LPO-Gs-HAS"/>
+                            <constraint firstItem="nIs-pN-Pf2" firstAttribute="top" secondItem="CwL-vY-7cV" secondAttribute="bottom" constant="22" id="XG0-OV-PL2"/>
+                            <constraint firstItem="3Ha-Al-2pP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Yrz-SW-gKi"/>
+                            <constraint firstItem="3Ha-Al-2pP" firstAttribute="top" secondItem="fI0-0H-0DJ" secondAttribute="bottom" constant="17" id="ZAo-Ax-2BP"/>
+                            <constraint firstItem="fI0-0H-0DJ" firstAttribute="top" secondItem="nIs-pN-Pf2" secondAttribute="bottom" constant="75" id="aGH-0A-fMl"/>
+                            <constraint firstItem="CwL-vY-7cV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fsn-3s-PTK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fI0-0H-0DJ" secondAttribute="trailing" constant="125" id="giW-7s-DhI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3Ha-Al-2pP" secondAttribute="bottom" constant="12" id="kps-cj-wRj"/>
+                            <constraint firstItem="CwL-vY-7cV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="pxs-Uj-hiR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nIs-pN-Pf2" secondAttribute="trailing" constant="20" id="wEw-NE-cVn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="todoListStackView" destination="3Ha-Al-2pP" id="nsp-IY-T8i"/>
+                        <outlet property="todoTextField" destination="CwL-vY-7cV" id="0yX-lf-EBN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
+        </scene>
+    </scenes>
+</document>
