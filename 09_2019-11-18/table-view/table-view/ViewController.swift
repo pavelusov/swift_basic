@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var todoTableView: UITableView!
     
-    private var tableData: [String] = []
+    private var tableData: [[String : Any]] = []
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableData = (0...30).map { "Row \($0)" }
+        tableData = (1...10).map { ["isCheck": false, "title": "Невероятно огроменное дело под номером  0000-0000-000\($0)"] }
         
         todoTableView.dataSource = self
         todoTableView.refreshControl = refreshControl
@@ -54,7 +54,28 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select \(indexPath)")
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        var title = "Check"
+        let isCheck: Bool = self.tableData[indexPath.row]["isCheck"] as! Bool
+        
+        if isCheck {
+            title = "Uncheck"
+        }
+        
+        
+        let action = UIContextualAction(style: .normal, title: title) { (_, _, complection) in
+            self.tableData[indexPath.row]["isCheck"] = !isCheck
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            complection(true)
+        }
+        
+        action.backgroundColor =  isCheck ? .systemRed : .systemGreen
+        
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }
 
@@ -67,8 +88,16 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = tableData[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.identifier, for: indexPath) as! ItemCell
+        let item = tableData[indexPath.row]
+        cell.labelView?.text = item["title"] as? String
+        
+        if let isCheck = item["isCheck"] as? Bool {
+            if isCheck {
+                cell.accessoryType = .checkmark
+            }
+        }
+    
         return cell
     }
 

@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-1161" y="-183"/>
         </scene>
-        <!--Title-->
+        <!--Список дел-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="table_view" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,13 +35,30 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="XG6-Nd-jqT">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCell" rowHeight="95" id="XG6-Nd-jqT" customClass="ItemCell" customModule="table_view" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XG6-Nd-jqT" id="r5f-kG-S5g">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-GH-bbx">
+                                                    <rect key="frame" x="30" y="21" width="354" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sch-GH-bbx" firstAttribute="top" secondItem="r5f-kG-S5g" secondAttribute="topMargin" constant="10" id="K27-cp-UAJ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Sch-GH-bbx" secondAttribute="bottom" constant="10" id="gvL-p0-gtm"/>
+                                                <constraint firstItem="Sch-GH-bbx" firstAttribute="leading" secondItem="r5f-kG-S5g" secondAttribute="leadingMargin" constant="10" id="ppg-XI-M0I"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Sch-GH-bbx" secondAttribute="trailing" constant="10" id="taO-zb-AUJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelView" destination="Sch-GH-bbx" id="a2g-5G-YLr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -55,7 +72,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="d3B-fH-XU8">
+                    <navigationItem key="navigationItem" title="Список дел" id="d3B-fH-XU8">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="SZY-EV-F0t">
                             <connections>
                                 <action selector="itemHandler:" destination="BYZ-38-t0r" id="z4K-gE-1Sf"/>
@@ -68,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-146" y="-183"/>
+            <point key="canvasLocation" x="-146.37681159420291" y="-183.48214285714286"/>
         </scene>
     </scenes>
 </document>
